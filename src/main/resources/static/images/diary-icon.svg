@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg version="1.1" baseProfile="tiny" id="레이어_1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
+	 viewBox="0 0 64 64" xml:space="preserve">
+<g>
+	<g>
+		<rect x="20" y="10" fill="#FFCC00" width="34" height="44"/>
+		<g>
+			<path d="M36.983,26.496c0.576-1.457,1.543-3.153,4.308-3.153c2.533,0,4.745,1.587,4.745,4.892c0,3.479-5.437,10.134-9.099,13.765
+				C33.275,38.607,28,32.149,28,27.822c0-2.479,1.912-4.479,4.654-4.479c2.693,0,3.706,1.652,4.283,3.022L36.983,26.496z"/>
+		</g>
+		<path d="M52,8H12c-2.2,0-4,1.8-4,4v40c0,2.2,1.8,4,4,4h40c2.2,0,4-1.8,4-4V12C56,9.8,54.2,8,52,8z M11,52V12c0-0.542,0.458-1,1-1
+			h6v42h-6C11.458,53,11,52.542,11,52z M53,52c0,0.542-0.458,1-1,1H21V11h31c0.542,0,1,0.458,1,1V52z"/>
+	</g>
+</g>
+</svg>
