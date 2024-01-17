@@ -7,11 +7,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class Controller {
 
-
     @GetMapping("/petnote")
     public String home(Model model){
         model.addAttribute("message","hello");
         return "home";
+
+    }
+
+    @GetMapping("/MemberLogin")
+
+    public String login() {
+
+        return "./login/login";
 
     }
 
