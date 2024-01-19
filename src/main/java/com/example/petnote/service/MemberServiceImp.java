@@ -3,6 +3,7 @@ package com.example.petnote.service;
 import com.example.petnote.dao.MemberDAO;
 import com.example.petnote.dto.MemberDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,5 +23,15 @@ public class MemberServiceImp implements MemberService{
 
         }
         return member;
+    }
+
+    @Override
+    public MemberDTO memberSignUp(MemberDTO memberDTO) {
+        try {
+            memberDAO.memberSignUp(memberDTO);
+        }catch (DataIntegrityViolationException e) {
+            e.printStackTrace();
+        }
+        return memberDTO;
     }
 }

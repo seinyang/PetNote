@@ -23,4 +23,9 @@ public class MemberDaoImp implements MemberDAO {
         params.put("password", password);
         return mapper.login(id);
     }
+
+    @Override
+    public void memberSignUp(MemberDTO memberDTO) {
+        mapper.signup(memberDTO);
+    }
 }

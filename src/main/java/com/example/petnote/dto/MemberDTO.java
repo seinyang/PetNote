@@ -3,6 +3,8 @@ package com.example.petnote.dto;
 import lombok.Data;
 import org.springframework.scheduling.support.SimpleTriggerContext;
 
+import java.util.Date;
+
 @Data
 
 public class MemberDTO {
@@ -15,5 +17,5 @@ public class MemberDTO {
 
     private String email;
 
-    private int birthdate;
+    private Date birthdate;
 }

@@ -13,7 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/").authenticated() // "/" 경로에 대해 인증이 필요함
+                .antMatchers("/","/signup").authenticated() // "/" 경로에 대해 인증이 필요함
                 .anyRequest().permitAll() // 나머지 요청은 인증 없이 허용
                 .and()
                 .formLogin()
