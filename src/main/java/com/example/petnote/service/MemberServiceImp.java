@@ -29,9 +29,13 @@ public class MemberServiceImp implements MemberService{
     public MemberDTO memberSignUp(MemberDTO memberDTO) {
         try {
             memberDAO.memberSignUp(memberDTO);
+
         }catch (DataIntegrityViolationException e) {
             e.printStackTrace();
         }
+
         return memberDTO;
+
     }
+
 }

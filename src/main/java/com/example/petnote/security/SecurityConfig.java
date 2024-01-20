@@ -13,11 +13,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/signup").authenticated() // "/" 경로에 대해 인증이 필요함
-                .anyRequest().permitAll() // 나머지 요청은 인증 없이 허용
+                .antMatchers("/", "/signup").hasRole("ysi")
+                .anyRequest().permitAll()
                 .and()
                 .formLogin()
-                .loginPage("/login") // 로그인 페이지 경로 설정
-                .permitAll();
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .httpBasic().disable()  // Disable HTTP Basic authentication to avoid potential issues
+                .csrf().disable();      // Disable CSRF protection for simplicity (consider enabling in production)
     }
 }

@@ -41,6 +41,7 @@ public class Controller {
     public String memberInsert(Model model, MemberDTO memberDTO) {
 
         model.addAttribute("member",memberServiceImp.memberSignUp(memberDTO));
+        System.out.println("셍;"+memberServiceImp.memberSignUp(memberDTO));
 
         return "./signup/signup_view";
 
