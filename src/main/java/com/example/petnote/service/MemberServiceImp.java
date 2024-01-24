@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Service
 @RequiredArgsConstructor
 public class MemberServiceImp implements MemberService{
@@ -17,12 +20,10 @@ public class MemberServiceImp implements MemberService{
 
         MemberDTO member = memberDAO.memberLogin(id,password);
 
-        if (member == null){
-
-            return null;
-
+        if (member != null && member.getId().equals(id) && member.getPassword().equals(password)) {
+            return member;
         }
-        return member;
+        return null;
     }
 
     @Override
@@ -37,5 +38,20 @@ public class MemberServiceImp implements MemberService{
         return memberDTO;
 
     }
+
+    @Override
+    public  int memberIdCheck(HttpServletRequest request, HttpServletResponse response) {
+        //============= 서비스imp 아이디 중복확인 메서드==========
+
+        int idcheck = 0;
+        String id = request.getParameter("id");
+        if (memberDAO.memberId(id) == null) {
+            idcheck = 0;
+        } else {
+            idcheck = 1;
+        }
+        return idcheck;
+    }
+
 
 }

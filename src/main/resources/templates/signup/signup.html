@@ -44,11 +44,13 @@
                         id: id
                     },
                     success: function(result) {
+                        console.log("전체 결과 - ", result);
                         console.log("아이디 값 - " + result.result);
-                        if ($.trim(result.result) == 1) {
+                        console.log("아이디 값 - " + result.result);
+                        if (result.result === 1) {
                             alert("이미 등록된 아이디입니다.");
                             $("#id").focus();
-                        } else if ($.trim(result.result) == 0) {
+                        } else if (result.result === 0) {
                             alert("등록할 수 있는 아이디입니다.");
                             $('#idCheck').val("0");
                             $("#name").focus();
@@ -171,12 +173,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="birthdate" class="col-4 col-form-label pr-0">
+                                            <label for="birthday" class="col-4 col-form-label pr-0">
                                                 <i class="fas fa-birthday-cake mr-sm-2"></i>
                                                 생일
                                             </label>
                                             <div class="col-8 pl-0">
-                                                <input type="text" name="birthday" id="birthdate" class="form-control">
+                                                <input type="text" name="birthday" id="birthday" class="form-control">
                                             </div>
                                         </div>
                                     </div>

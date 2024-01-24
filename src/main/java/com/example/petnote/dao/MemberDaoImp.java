@@ -18,14 +18,17 @@ public class MemberDaoImp implements MemberDAO {
 
     @Override
     public MemberDTO memberLogin(String id, String password) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("id", id);
-        params.put("password", password);
-        return mapper.login(id);
+
+        return mapper.login(id,password);
     }
 
     @Override
     public void memberSignUp(MemberDTO memberDTO) {
         mapper.signup(memberDTO);
+    }
+
+
+    public MemberDTO memberId(String id) {
+        return mapper.idcheck(id);
     }
 }

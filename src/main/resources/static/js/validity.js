@@ -45,9 +45,7 @@ $(function() {
 	      },
 	      password : {
 	       required : true,
-	       minlength : 4,
-	       // 최대길이를 지정한다.
-	       maxlength : 8
+
 	      },
 	      pwdre : {
 	       required : true,
@@ -119,7 +117,7 @@ $(function() {
 });
 $(function() {
 	$("#signupForm").submit(function() {
-		if ($("#nameCheck").val() == 0) {
+		if ($("#nameCheck").val() === 0) {
 			alert("이름 중복을 확인하세요.");
 			return false;
 		}
@@ -128,7 +126,7 @@ $(function() {
 
 $(function() {
 	$("#signupForm2").submit(function() {
-		if ($("#nameCheck").val() == 0) {
+		if ($("#nameCheck").val() === 0) {
 			alert("펫 이름 중복을 확인하세요.");
 			return false;
 		}
@@ -147,7 +145,7 @@ $(function() {
 
 $(function() {
 	$("#dbnameCheck").submit(function() {
-		if ($("#nameCheck").val() == 0) {
+		if ($("#nameCheck").val() === 0) {
 			alert("애완견 이름 중복을 확인하세요.");
 			return false;
 		}
@@ -163,7 +161,7 @@ $(function() {
 			return false;
 		}
 		var content = CKEDITOR.instances['content'].getData();
-		if (content == '' || content.length == 0) {
+		if (content === '' || content.length == 0) {
 
 			alert("내용을 입력하세요.");
 			$("#content").focus();

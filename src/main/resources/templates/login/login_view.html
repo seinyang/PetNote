@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 결과</title>
+</head>
+<body>
+<script th:if="${login != null}" th:inline="javascript">
+    var loginId = /*[[${login.id}]]*/ '';
+    var memberDTOId = /*[[${memberDTO.id}]]*/ '';
+    console.log('loginId:', loginId, 'memberDTOId:', memberDTOId);
+
+    if (!loginId || !memberDTOId || loginId !== memberDTOId) {
+        alert('가입되지 않은 아이디 또는 비밀번호입니다.');
+        console.log('loginId:', loginId, 'memberDTOId:', memberDTOId);
+    } else {
+        // 로그인 성공 시 홈화면으로 리다이렉트
+        window.location.href = '/petnote';
+    }
+</script>
+</body>
+</html>

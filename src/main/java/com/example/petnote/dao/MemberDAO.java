@@ -7,4 +7,6 @@ public interface MemberDAO {
     public MemberDTO memberLogin(String id,String Password);
 
     public void memberSignUp(MemberDTO memberDTO);
+
+    public MemberDTO memberId(String id);
 }
