@@ -9,28 +9,39 @@ spring:
       ddl-auto: update
     show-sql: true
 
-  security:
-      oauth2:
-        client:
-          registration:
-            kakao:
-              client-id: 118fad53052e3d2561e881196f94ac02
-              client-secret: Cwh3kgRUhJH8eFLHYAA1ablB5yBBpLoa
-              redirect-uri: http://localhost:8080/login/kakaotalk
-              scope: profile
-              authorization-grant-type: authorization_code
-          provider:
-            kakao:
-              authorization-uri: https://kauth.kakao.com/oauth/authorize
-              token-uri: https://kauth.kakao.com/oauth/token
-              user-info-uri: https://kapi.kakao.com/v2/user/me
-              user-name-attribute: id
+
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+#  security:
+#      oauth2:
+#        client:
+#          registration:
+#            kakao:
+#              client-id: 118fad53052e3d2561e881196f94ac02
+#              client-secret: Cwh3kgRUhJH8eFLHYAA1ablB5yBBpLoa
+#              redirect-uri: http://localhost:9090/login/kakaotalk
+#              scope: profile
+#              authorization-grant-type: authorization_code
+#          provider:
+#            kakao:
+#              authorization-uri: https://kauth.kakao.com/oauth/authorize
+#              token-uri: https://kauth.kakao.com/oauth/token
+#              user-info-uri: https://kapi.kakao.com/v2/user/me
+#              user-name-attribute: id
 
 
   thymeleaf:
-      cache: false
-      prefix: classpath:/templates/
-      suffix: .html
+    mode: LEGACYHTML5
+    enabled: true # Thymeleaf를 활성화하려면 true로 설정
+    prefix: classpath:/templates/
+    cache: false # 템플릿 캐시를 끄려면 false로 설정
+    encoding: UTF-8 # 템플릿 인코딩 설정
+    servlet:
+      content-type: text/html # 컨텐츠 타입 설정
 
 
 logging:
@@ -42,3 +53,6 @@ logging:
 jwt:
     secret: hello.world.ee.ff
     algorithm: "HS256"
+
+server:
+  port: 9090

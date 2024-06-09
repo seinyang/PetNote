@@ -118,16 +118,18 @@
                         </button>
                     </span>
                         <span>
-                        <button type="button" class="btn btn-outline-warning" onclick="redirectToKakaoLogin()">
-                            <i class="fas fa-user-lock mr-sm-1"></i>KAKAOTALK
-                        </button>
-                    </span>
+    <button type="button" class="btn btn-outline-warning" onclick="redirectToKakaoLogin()">
+        <i class="fas fa-user-lock mr-sm-1"></i>KAKAOTALK
+    </button>
+</span>
+
                         <script>
                             function redirectToKakaoLogin() {
                                 // Kakao 로그인 URL로 리다이렉트
-                                location.href = '/kakao/login';
+                                window.location.href = '/kakao/login';
                             }
                         </script>
+
                     </div>
                     <div class="card-body">
                         <form action="./MemberSignUp" method="post" id="signupForm" class="" enctype="application/x-www-form-urlencoded">
