@@ -45,10 +45,10 @@
                     },
                     success: function(result) {
                         console.log("아이디 값 - " + result.result);
-                        if ($.trim(result.result) == 1) {
+                        if ($.trim(result.result) === 1) {
                             alert("이미 등록된 아이디입니다.");
                             $("#id").focus();
-                        } else if ($.trim(result.result) == 0) {
+                        } else if ($.trim(result.result) === 0) {
                             alert("등록할 수 있는 아이디입니다.");
                             $('#idCheck').val("0");
                             $("#name").focus();

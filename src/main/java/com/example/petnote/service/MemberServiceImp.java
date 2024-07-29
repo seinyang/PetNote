@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MemberServiceImp implements MemberService{
 
-    final MemberDAO memberDAO;
+    private final MemberDAO memberDAO;
 
     @Override
     public MemberDTO memberLogin(String id, String password) {

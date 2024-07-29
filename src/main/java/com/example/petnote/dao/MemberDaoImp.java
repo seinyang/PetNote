@@ -18,9 +18,7 @@ public class MemberDaoImp implements MemberDAO {
 
     @Override
     public MemberDTO memberLogin(String id, String password) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("id", id);
-        params.put("password", password);
+
         return mapper.login(id);
     }
 

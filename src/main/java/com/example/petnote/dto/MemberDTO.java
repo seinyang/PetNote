@@ -1,5 +1,6 @@
 package com.example.petnote.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.scheduling.support.SimpleTriggerContext;
 
@@ -17,5 +18,5 @@ public class MemberDTO {
 
     private String email;
 
-    private Date birthdate;
+    private Date birthday;
 }
