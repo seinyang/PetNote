@@ -34,4 +34,14 @@ public class MemberServiceImp implements MemberService{
         }
         return memberDTO;
     }
+
+    public boolean isIdExist(String id) {
+      return memberDAO.isIdExist(id);
+    }
+
+    @Override
+    public String memberIdSearch(String name, String email) {
+        return memberDAO.IdSearch(name, email);
+
+    }
 }

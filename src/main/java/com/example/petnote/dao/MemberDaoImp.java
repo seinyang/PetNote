@@ -19,11 +19,22 @@ public class MemberDaoImp implements MemberDAO {
     @Override
     public MemberDTO memberLogin(String id, String password) {
 
-        return mapper.login(id);
+        return mapper.login(id,password);
     }
 
     @Override
     public void memberSignUp(MemberDTO memberDTO) {
         mapper.signup(memberDTO);
+    }
+
+    @Override
+    public boolean isIdExist(String id) {
+        return mapper.isIdExist(id);
+    }
+
+    @Override
+    public String IdSearch(String name, String email) {
+        return mapper.IdSearch(name, email);
+
     }
 }

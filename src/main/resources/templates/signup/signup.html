@@ -198,6 +198,83 @@
         </div>
     </div>
 </section>
+<script>
+    function checkIdExistence() {
+        const id = document.getElementById('id').value;
+        if (!id) {
+            alert("아이디를 입력하세요.");
+            return;
+        }
+
+        $.ajax({
+            url: `/CheckId/${id}`,
+            type: 'GET',
+            success: function(response) {
+                if (response) {
+                    alert("이미 존재하는 아이디입니다.");
+                    document.getElementById('idCheck').value = 'false';
+                } else {
+                    alert("사용 가능한 아이디입니다.");
+                    document.getElementById('idCheck').value = 'true';
+                }
+            },
+            error: function() {
+                alert("아이디 중복 체크 중 오류가 발생했습니다.");
+            }
+        });
+    }
+
+    function handleSignUp(event) {
+        event.preventDefault(); // 폼 제출 방지
+
+        const idCheck = document.getElementById('idCheck').value;
+        if (idCheck !== 'true') {
+            alert("아이디 중복 체크를 해주세요.");
+            return;
+        }
+
+        const id = document.getElementById('id').value;
+        const password = document.getElementById('password').value;
+        const name = document.getElementById('name').value;
+        const pwdre = document.getElementById('pwdre').value;
+        const email = document.getElementById('email').value;
+        const birthday = document.getElementById('birthday').value;
+
+        if (password !== pwdre) {
+            alert("비밀번호가 일치하지 않습니다.");
+            return;
+        }
+
+        $.ajax({
+            url: '/MemberSignUp',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ id: id, password: password, name: name, email: email, birthday: birthday }),
+            success: function(response) {
+                if (response) {
+                    alert("회원가입 성공!");
+                    window.location.href = "/MemberLogin"; // 회원가입 성공 시 로그인 페이지로 이동
+                } else {
+                    alert("회원가입에 실패했습니다.");
+                }
+            },
+            error: function(xhr) {
+                if (xhr.status === 409) {
+                    alert("이미 존재하는 아이디입니다.");
+                } else if (xhr.status === 400) {
+                    alert("잘못된 요청입니다.");
+                } else {
+                    alert("이미 존재하는 아이디입니다.");
+                }
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('dbidCheck').addEventListener('click', checkIdExistence);
+        document.getElementById('signupForm').addEventListener('submit', handleSignUp);
+    });
+</script>
 <footer id="main-footer" class="bg-secondary text-white mt-3 p-3">
     <div class="container">
         <div class="row">

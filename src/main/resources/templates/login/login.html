@@ -47,7 +47,7 @@
                         <h4>ID 로그인</h4>
                     </div>
                     <div class="card-body">
-                        <form method="post" id="signupForm" enctype="application/x-www-form-urlencoded">
+                        <form action="/MemberLogin" method="post" id="signupForm" enctype="application/x-www-form-urlencoded">
                             <fieldset>
                                 <div class="form-group">
 
@@ -93,6 +93,37 @@
             </div>
         </div>
     </div>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // 폼 제출 방지
+
+            // 입력값 가져오기
+            const id = document.getElementById('id').value;
+            const password = document.getElementById('password').value;
+
+            // 서버에 사용자 인증 요청
+            $.ajax({
+                url: '/MemberLogin',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ id: id, password: password }),
+                success: function(response) {
+                    if (response) {
+                        alert("로그인 성공!");
+                        window.location.href = "/petnote"; // 로그인 성공 시 홈 페이지로 이동
+                    }
+                },
+                error: function() {
+                    alert("가입되지 않은 아이디 또는 비밀번호입니다.");
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('signupForm');
+            form.addEventListener('submit', handleLogin);
+        });
+    </script>
 </section>
 <footer id="main-footer" class="bg-secondary text-white mt-3 p-3">
     <div class="container">
