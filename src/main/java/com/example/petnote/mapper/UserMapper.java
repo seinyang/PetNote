@@ -19,4 +19,7 @@ public interface UserMapper {
 
     @Select("SELECT id FROM petnote.member WHERE name = #{name} AND email = #{email} LIMIT 1")
     String IdSearch(@Param("name") String name,@Param("email") String email);
+
+    @Select("SELECT password FROM petnote.member WHERE id = #{id} AND email = #{email} LIMIT 1")
+    String PasswordSearch(@Param("id") String id,@Param("email") String email);
 }

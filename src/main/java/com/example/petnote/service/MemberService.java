@@ -11,4 +11,6 @@ public interface MemberService {
     boolean isIdExist(String id); // 추가
 
     public String memberIdSearch(String name, String email);
+
+    public String PasswordSearch(String id, String email);
 }

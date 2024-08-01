@@ -11,4 +11,6 @@ public interface MemberDAO {
     public boolean isIdExist(String id);
 
     public String IdSearch(String name,String email);
+
+    public String PasswordSearch(String id,String email);
 }

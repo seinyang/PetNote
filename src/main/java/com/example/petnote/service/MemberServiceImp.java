@@ -44,4 +44,9 @@ public class MemberServiceImp implements MemberService{
         return memberDAO.IdSearch(name, email);
 
     }
+
+    @Override
+    public String PasswordSearch(String id, String email) {
+        return memberDAO.PasswordSearch(id,email);
+    }
 }

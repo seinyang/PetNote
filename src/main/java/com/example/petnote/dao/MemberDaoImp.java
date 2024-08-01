@@ -35,6 +35,12 @@ public class MemberDaoImp implements MemberDAO {
     @Override
     public String IdSearch(String name, String email) {
         return mapper.IdSearch(name, email);
-
     }
+
+    @Override
+    public String PasswordSearch(String id, String email) {
+        return mapper.PasswordSearch(id,email);
+    }
+
+
 }

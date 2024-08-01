@@ -22,7 +22,7 @@ public class Controller {
     final MemberServiceImp memberServiceImp;
 
     @GetMapping("/petnote")
-    public String home(Model model){
+    public String home(){
 
         return "home";
 
@@ -63,30 +63,54 @@ public class Controller {
         return "/login/id_search_view";
 
     }
-
     @PostMapping("/IdSearch")
 
-    public ResponseEntity<String> idSearch(@RequestBody Map<String, String> searchData) {
+    public ResponseEntity<String> idSearch(@RequestBody Map<String, String> searchIdData) {
 
-        String name =searchData.get("name");
-        String email = searchData.get("email");
+        String name =searchIdData.get("name");
+        String email = searchIdData.get("email");
 
         String id = memberServiceImp.memberIdSearch(name,email);
 
         if (id != null) {
             return ResponseEntity.ok(id);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No matching ID found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("일치하는 아이디를 찾을수 없습니다.");
+        }
+    }
+    @GetMapping("/PasswordSearch")
+
+    public String PasswordSearch() {
+
+        return "/login/password_search";
+
+    }
+
+    @GetMapping("/PasswordSearchView")
+
+    public String PasswordSearchView() {
+
+        return "/login/password_search_view";
+
+    }
+
+    @PostMapping("/PasswordSearch")
+
+    public ResponseEntity<String> PasswordSearch(@RequestBody Map<String, String> PasswordData) {
+
+        String id =PasswordData.get("id");
+        String email = PasswordData.get("email");
+
+        String password = memberServiceImp.PasswordSearch(id,email);
+
+        if (id != null) {
+            return ResponseEntity.ok(password);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("일치하는 비밀번호를 찾을수 없습니다.");
         }
     }
 
-    @GetMapping("/MemberSignUp")
 
-    public String memberInsert() {
-
-        return "./signup/signup";
-
-    }
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
