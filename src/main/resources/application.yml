@@ -4,6 +4,10 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
 
+
+
+
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/petnote?useSSL=false&serverTimezone=Asia/Seoul
@@ -19,3 +23,8 @@ kakao:
   client_id: 19e1313e9e1df81319be25cb2a44ec5f
   redirect_uri: http://localhost:8080/callback
   client_secret: 2quw6fudGhxNfojNsW0xQBwaZeVPo3fI
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.petnote.dto

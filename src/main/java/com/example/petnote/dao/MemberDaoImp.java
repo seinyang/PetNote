@@ -1,20 +1,17 @@
 package com.example.petnote.dao;
 
 import com.example.petnote.dto.MemberDTO;
-import com.example.petnote.mapper.UserMapper;
+import com.example.petnote.mapper.Mapper;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Repository;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Repository
 @RequiredArgsConstructor
 
 public class MemberDaoImp implements MemberDAO {
 
-    final UserMapper mapper;
+    final Mapper mapper;
 
     @Override
     public MemberDTO memberLogin(String id, String password) {
