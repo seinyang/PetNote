@@ -69,4 +69,33 @@ public class kakaoService {
 
         return kakaoTokenResponseDto.getAccessToken();
     }
+
+
+    public kakaoUserInfoResponseDto getUserInfo(String accessToken) {
+        //사용자의 정보를 받아오기위해서 웹클라이언트를 사용해 카카오 api에 요청 보냄
+        kakaoUserInfoResponseDto userInfo = WebClient.create(KAUTH_USER_URL_HOST)
+                .get()
+                .uri(uriBuilder -> uriBuilder
+                        // HTTPS 스킴을 사용하여 엔드포인트에 접근
+                        .scheme("https")
+                        .path("/v2/user/me")
+                        .build(true))
+                //http요청헤더에 AUTHORIZATION 베리어 타입의 토큰을 추가하여 인증!
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken) // access token 인가
+                .header(HttpHeaders.CONTENT_TYPE, HttpHeaderValues.APPLICATION_X_WWW_FORM_URLENCODED.toString())
+                .retrieve()
+                // 응답 상태가 4xx일 경우, 'Invalid Parameter' 예외를 발생
+                .onStatus(HttpStatusCode::is4xxClientError, clientResponse -> Mono.error(new RuntimeException("Invalid Parameter")))
+                // 응답 상태가 5xx일 경우, 'Internal Server Error'
+                .onStatus(HttpStatusCode::is5xxServerError, clientResponse -> Mono.error(new RuntimeException("Internal Server Error")))
+                //KakaoUserInfoResponseDto객체로 반환
+                .bodyToMono(kakaoUserInfoResponseDto.class)
+                .block();
+
+        log.info("[ Kakao Service ] Auth ID ---> {} ", userInfo.getId());
+        log.info("[ Kakao Service ] NickName ---> {} ", userInfo.getKakaoAccount().getProfile().getNickName());
+        log.info("[ Kakao Service ] ProfileImageUrl ---> {} ", userInfo.getKakaoAccount().getProfile().getProfileImageUrl());
+
+        return userInfo;
+    }
 }

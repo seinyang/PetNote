@@ -1,5 +1,6 @@
 package com.example.petnote.controller;
 
+import com.example.petnote.dto.kakaoUserInfoResponseDto;
 import com.example.petnote.service.kakaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +28,6 @@ public class AuthController {
 
 
     @GetMapping("/MemberSignUp")
-
     public String memberInsert(Model model) {
 
         String kakaoLocation = "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=" + kakaoClientId + "&redirect_uri=" + kakaoRedirectUri;
@@ -36,13 +36,15 @@ public class AuthController {
         return "/signup/signup";
 
     }
+
     // 카카오 로그인에서 동의 버튼을 누르면 ,카카오 인증서버가 ? 인가코드를 콜백 url에 전달
     @GetMapping("/callback")
     public ResponseEntity<?> callback(@RequestParam("code") String code)throws IOException {
+
         // 인가 코드(code)로 액세스 토큰을 요청
         String accessToken = kakaoService.getAccessTokenKakao(code);
-//        //받아온 액세스 토큰을 사용하여 카카오사용자 정보를 요청
-//        kakaoUserInfoResponseDto userInfo = kakaoService.getUserInfo(accessToken);
+        //받아온 액세스 토큰을 사용하여 카카오사용자 정보를 요청
+        kakaoUserInfoResponseDto userInfo = kakaoService.getUserInfo(accessToken);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
