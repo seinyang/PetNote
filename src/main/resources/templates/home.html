@@ -98,6 +98,26 @@
                                  height="66px">
                         </button>
                     </div>
+                    <div>
+                        <h2 th:if="${isAuthenticated}">
+                            안녕하세요, <span th:text="${userInfo.getKakaoAccount().getProfile().getNickName()}">User</span>님! 카카오 인증 되었습니다
+                            <br>
+                            정보
+                            <br>
+                            1.일련 ID:<span th:text="${userInfo.getId()}"></span>
+                            <br>
+                            3.토큰:<span th:text="${accessToken}"></span>
+
+                        </h2>
+
+                    </div>
+                    <script th:inline="javascript">
+                        /*<![CDATA[*/
+                        if (![[${isAuthenticated}]]) {
+                            window.location.replace("/MemberLogin");
+                        }
+                        /*]]>*/
+                    </script>
                 </li>
 
                 <!--<li class="dropdown">

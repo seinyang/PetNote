@@ -1,7 +1,9 @@
 package com.example.petnote.controller;
 
 import com.example.petnote.dto.MemberDTO;
+import com.example.petnote.dto.kakaoUserInfoResponseDto;
 import com.example.petnote.service.MemberServiceImp;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -22,8 +24,19 @@ public class Controller {
     final MemberServiceImp memberServiceImp;
 
     @GetMapping("/petnote")
-    public String home(){
+    public String home(HttpSession session,Model model){
+        Boolean isAuthenticated = (Boolean) session.getAttribute("isAuthenticated");
 
+        kakaoUserInfoResponseDto userInfo = (kakaoUserInfoResponseDto) session.getAttribute("userInfo");
+        String accessToken = (String) session.getAttribute("accessToken");
+
+        if (isAuthenticated != null && isAuthenticated) {
+            model.addAttribute("isAuthenticated", true);
+            model.addAttribute("userInfo", userInfo);
+            model.addAttribute("accessToken",accessToken);
+        } else {
+            model.addAttribute("isAuthenticated", false);
+        }
         return "home";
 
     }
