@@ -19,10 +19,10 @@ spring:
     serialization:
       write-dates-as-timestamps: false
 
-kakao:
-  client_id: 19e1313e9e1df81319be25cb2a44ec5f
-  redirect_uri: http://localhost:8080/callback
-  client_secret: 2quw6fudGhxNfojNsW0xQBwaZeVPo3fI
+# kakao:
+#   client_id: ${KAKAO_CLIENT_ID}
+#   redirect_uri: http://localhost:8080/callback
+#   client_secret: ${KAKAO_CLIENT_SECRET}
 
 
 mybatis:
